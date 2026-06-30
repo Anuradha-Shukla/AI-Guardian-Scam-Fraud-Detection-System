@@ -1,0 +1,231 @@
+ <!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Scan</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0a0f1c;   /* SAME DARK AI BACKGROUND */
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            width: 420px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(0,0,0,0.4);
+            color: white;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #00f5ff, #7b2ff7);
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: #00f5ff;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>AI Fraud Scan</h2>
+
+    <form method="POST">
+        <input type="text" name="message" placeholder="Enter transaction / message">
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            Result: {{ result }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html> 
+
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fraud Scan</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0a0f1c;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        .box {
+            width: 450px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            text-align: center;
+        }
+
+        h1 {
+            color: #00f5ff;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+
+            border: none;
+            outline: none;
+
+            border-radius: 8px;
+
+            background: rgba(0,0,0,0.4);
+
+            color: white;
+
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+
+            padding: 12px 25px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            color: white;
+
+            background: linear-gradient(90deg, #00f5ff, #7b2ff7);
+
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 25px;
+
+            background: rgba(255,255,255,0.05);
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            text-align: left;
+        }
+
+        .result h2 {
+            color: #00f5ff;
+        }
+
+        .reason {
+            margin-top: 10px;
+        }
+
+        .reason p {
+            margin: 6px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>AI Fraud Detection</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="message"
+            placeholder="Enter transaction / message"
+            required
+        >
+
+        <button type="submit">Scan Message</button>
+
+    </form>
+
+    {% if result %}
+    <div class="result">
+
+        <h2>Result:</h2>
+
+        <p>{{ result }}</p>
+
+        {% if reasons %}
+        <div class="reason">
+
+            <h3>Reason:</h3>
+
+            {% for reason in reasons %}
+                <p>• {{ reason }}</p>
+            {% endfor %}
+
+        </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+
+    <style>
+        body {
+            background: #0a0f1c;
+            color: white;
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #00f5ff;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .fraud {
+            color: red;
+        }
+
+        .safe {
+            color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Transaction History</h1>
+
+{% for item in data %}
+    <div class="card">
+        <p><b>Message:</b> {{ item.message }}</p>
+        <p>
+            <b>Result:</b>
+            {% if item.result == "FRAUD" %}
+                <span class="fraud">FRAUD DETECTED</span>
+            {% else %}
+                <span class="safe">SAFE</span>
+            {% endif %}
+        </p>
+    </div>
+{% endfor %}
+
+{% if data|length == 0 %}
+    <p>No history yet.</p>
+{% endif %}
+
+</body>
+</html> 
+ -->
+
+<!-- 
+ <h1>History</h1>
+
+{% for item in data %}
+    <div>
+        <p>{{ item.message }}</p>
+        <b>{{ item.result }}</b>
+    </div>
+{% endfor %}
+
+{% if data|length == 0 %}
+<p>No history yet</p>
+{% endif %} -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0a0f1c;   /* SAME DARK THEME */
+            color: white;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #00f5ff;
+            font-family: Orbitron;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .fraud { color: red; }
+        .safe { color: lightgreen; }
+        .suspicious { color: orange; }
+    </style>
+</head>
+
+<body>
+
+<h1>Transaction History</h1>
+
+{% for item in data %}
+    <div class="card">
+        <p><b>Message:</b> {{ item.message }}</p>
+        <p>
+            <b>Result:</b>
+            {% if item.result == "FRAUD" %}
+                <span class="fraud">FRAUD</span>
+            {% elif item.result == "SUSPICIOUS" %}
+                <span class="suspicious">SUSPICIOUS</span>
+            {% else %}
+                <span class="safe">SAFE</span>
+            {% endif %}
+        </p>
+    </div>
+{% endfor %}
+
+{% if data|length == 0 %}
+<p>No history yet</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Guardian</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0a0f1c;
+            color: white;
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        /* background grid */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 12s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes moveGrid {
+            from { transform: translateY(0); }
+            to { transform: translateY(50px); }
+        }
+
+        /* glow blobs */
+        .blob {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            filter: blur(120px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        .b1 { top: 10%; left: 10%; background: #00f5ff; }
+        .b2 { bottom: 10%; right: 10%; background: #ff00ff; }
+
+        /* NAV */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 60px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron';
+            color: #00f5ff;
+            font-size: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #00f5ff;
+        }
+
+        /* CENTER BOX */
+        .center-box {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-family: 'Orbitron';
+            font-size: 60px;
+            color: #00f5ff;
+            text-shadow: 0 0 20px #00f5ff;
+        }
+
+        p {
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* CARDS */
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 16px;
+            width: 220px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(0,255,255,0.4);
+        }
+
+        .card h3 {
+            color: #00f5ff;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* BUTTON */
+        .btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(90deg, #00f5ff, #7b2ff7);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">AI GUARDIAN</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/scan">Scan</a>
+            <a href="/history">History</a>
+            <a href="/analytics">Analytics</a>
+        </div>
+    </nav>
+
+    <!-- CENTER -->
+    <div class="center-box">
+
+        <h1>AI GUARDIAN</h1>
+        <p>Fraud Detection AI System</p>
+
+        <div class="grid">
+
+            <a href="/scan">
+                <div class="card">
+                    <h3>🔍 Scan</h3>
+                    <p>Detect fraud instantly</p>
+                </div>
+            </a>
+
+            <a href="/analytics">
+                <div class="card">
+                    <h3>📊 Analytics</h3>
+                    <p>AI insights dashboard</p>
+                </div>
+            </a>
+
+            <a href="/history">
+                <div class="card">
+                    <h3>📂 History</h3>
+                    <p>Previous results</p>
+                </div>
+            </a>
+
+        </div>
+
+        <a href="/scan">
+            <button class="btn">Start AI Scan</button>
+        </a>
+
+    </div>
+
+</body>
+</html>

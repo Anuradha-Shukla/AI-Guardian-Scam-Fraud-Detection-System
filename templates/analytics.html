@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+
+            background: #0a0f1c;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00f5ff;
+            margin-bottom: 40px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            margin-bottom: 40px;
+        }
+
+        .card {
+            width: 220px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2 {
+            color: #00f5ff;
+        }
+
+        .number {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .charts {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+
+            flex-wrap: wrap;
+        }
+
+        .chart-box {
+            width: 420px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 15px;
+
+            padding: 20px;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AI Fraud Analytics Dashboard</h1>
+
+    <!-- ================= STATS ================= -->
+
+    <div class="stats-grid">
+
+        <div class="card">
+            <h2>Total Scans</h2>
+            <div class="number">{{ total }}</div>
+        </div>
+
+        <div class="card">
+            <h2>Fraud</h2>
+            <div class="number">{{ fraud_count }}</div>
+        </div>
+
+        <div class="card">
+            <h2>Suspicious</h2>
+            <div class="number">{{ suspicious_count }}</div>
+        </div>
+
+        <div class="card">
+            <h2>Safe</h2>
+            <div class="number">{{ safe_count }}</div>
+        </div>
+
+    </div>
+
+    <!-- Hidden data storage -->
+    <div
+        id="chartData"
+        data-fraud="{{ fraud_count }}"
+        data-suspicious="{{ suspicious_count }}"
+        data-safe="{{ safe_count }}"
+    ></div>
+
+    <!-- ================= CHARTS ================= -->
+
+    <div class="charts">
+
+        <!-- PIE CHART -->
+        <div class="chart-box">
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <!-- BAR CHART -->
+        <div class="chart-box">
+            <canvas id="barChart"></canvas>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // ================= GET DATA =================
+
+        const dataElement = document.getElementById("chartData");
+
+        const fraudCount = Number(dataElement.dataset.fraud);
+        const suspiciousCount = Number(dataElement.dataset.suspicious);
+        const safeCount = Number(dataElement.dataset.safe);
+
+        const chartData = [
+            fraudCount,
+            suspiciousCount,
+            safeCount
+        ];
+
+
+        // ================= PIE CHART =================
+
+        const pieCtx = document.getElementById('pieChart');
+
+        new Chart(pieCtx, {
+            type: 'pie',
+
+            data: {
+                labels: ['Fraud', 'Suspicious', 'Safe'],
+
+                datasets: [{
+                    data: chartData,
+
+                    backgroundColor: [
+                        '#ff4d4d',
+                        '#ffaa00',
+                        '#00ff99'
+                    ]
+                }]
+            }
+        });
+
+
+        // ================= BAR CHART =================
+
+        const barCtx = document.getElementById('barChart');
+
+        new Chart(barCtx, {
+            type: 'bar',
+
+            data: {
+                labels: ['Fraud', 'Suspicious', 'Safe'],
+
+                datasets: [{
+                    label: 'Scan Results',
+
+                    data: chartData,
+
+                    backgroundColor: [
+                        '#ff4d4d',
+                        '#ffaa00',
+                        '#00ff99'
+                    ]
+                }]
+            },
+
+            options: {
+                responsive: true,
+
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
