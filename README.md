@@ -1,22 +1,39 @@
 # AI Guardian - Scam & Fraud Detection System 🚨
 
-An AI-powered web application that detects scam, fraud, and suspicious messages using Machine Learning.
+An AI-powered web application that detects scam, fraud, and suspicious messages using Machine Learning and Natural Language Processing.
+
+The system analyzes user messages, identifies potential threats, provides confidence scores, stores scan history, and displays analytics for detected patterns.
 
 ## 🚀 Live Demo
 
-https://ai-guardian-scam-fraud-detection-system.onrender.com
+🔗 https://ai-guardian-scam-fraud-detection-system.onrender.com
 
-## Features
 
-- Scam/Fraud message detection
-- Suspicious activity detection
-- ML-based classification
-- Confidence score prediction
-- Scan history tracking
-- Analytics dashboard
-- Explainable AI using suspicious keyword detection
+## ✨ Features
 
-## Tech Stack
+- 🚨 Scam/Fraud message detection
+- ⚠️ Suspicious activity identification
+- 🤖 Machine Learning based classification
+- 📊 Confidence score prediction
+- 📝 Scan history management
+- 📈 Analytics dashboard
+- 🔍 Explainable AI using suspicious keyword detection
+- 💾 SQLite database integration
+
+
+## 🧠 How It Works
+
+1. User enters a message for analysis.
+2. Text is converted into numerical features using TF-IDF Vectorization.
+3. ML model analyzes the message patterns.
+4. The system classifies it as:
+   - SAFE
+   - FRAUD
+   - SUSPICIOUS
+5. Result and scan history are stored in the database.
+
+
+## 🛠️ Tech Stack
 
 ### Backend
 - Python
@@ -38,50 +55,5 @@ https://ai-guardian-scam-fraud-detection-system.onrender.com
 - JavaScript
 - Chart.js
 
-## Project Structure
 
-AI-Guardian/
-│
-├── app.py
-├── train_model.py
-├── model.pkl
-├── vectorizer.pkl
-├── requirements.txt
-│
-├── templates/
-│   ├── home.html
-│   ├── scan.html
-│   ├── history.html
-│   └── analytics.html
-│
-└── static/
-    ├── style.css
-    └── script.js
-
-
-## Installation
-
-Clone repository:
-
-git clone https://github.com/Anuradha-Shukla/AI-Guardian-Scam-Fraud-Detection-System.git
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Run application:
-
-python app.py
-
-
-Open:
-
-http://127.0.0.1:5000
-
-
-## Author
-
-Anuradha Shukla
-Information Technology Student
+## 📂 Project Structure
